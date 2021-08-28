@@ -1,0 +1,19 @@
+{
+  "name": "my-team-profile-generator",
+  "version": "1.0.0",
+  "description": "generates team profile",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CIDoubleAgent/My-Team-Profile-Generator.git"
+  },
+  "author": "Nicholas Zabkar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CIDoubleAgent/My-Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/CIDoubleAgent/My-Team-Profile-Generator#readme"
+}
