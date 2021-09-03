@@ -1,5 +1,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
+const Manager = require("./lib/Manager");
+
+let teamProfileArray = [];
 
 const managerQuestions = () => {
     return inquirer.prompt([
@@ -35,8 +38,12 @@ const managerQuestions = () => {
         }
     
     ])
+
     .then(managerData => {
-        const 
+        const { name, id, email, office } = managerData;
+        const manager = new Manager (name, id, email, office);
+        teamProfileArray.push(manager);
+        console.log(manager);
     })
 
     
