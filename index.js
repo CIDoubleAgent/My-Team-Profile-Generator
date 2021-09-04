@@ -22,8 +22,8 @@ function handleManagerPrompts(promptData) {
     if (add_member === 'Yes') {
         executePrompts(prompts.employeePrompts, handleEmployeePrompts)
     } else {
-        // TODO create index file
-        writeTeamMembersToFie(teamProfileArray)
+        
+        writeTeamMembersToFile(teamProfileArray)
        
     }
 }
@@ -37,34 +37,63 @@ function handleEmployeePrompts(promptData) {
         executePrompts(prompts.employeePrompts, handleEmployeePrompts)
     } else {
         // TODO create index file
-        writeTeamMembersToFie(teamProfileArray)
+        writeTeamMembersToFile(teamProfileArray)
     }
 }
 executePrompts(prompts.managerPrompt, handleManagerPrompts);
 
 
-function writeTeamMembersToFie(teamArray) {
-let html = ''
+function writeTeamMembersToFile(teamArray) {
+    let html = ''
 
-    html += `<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    </head>`
-    html += '<body>'
-    teamArray.forEach((person) => {
-        let office = person.office? person.office : ''
-        let school = person.school? person.school : ''
-        html += `
-        <div class="team-member">
-            ${person.name}<br>
-            ${person.id}<br>
-            ${person.email}<br>
-            ${person.role}<br>
-            ${school}<br>
-            ${office}
-        </div>
+    html += `
+    <!DOCTYPE html>
+    <html lang="en-us">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
+        <title>My Team</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        
+        <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+        crossorigin="anonymous"
+        />
+      </head>
+      <body>
+        <header>
+        
+        </header>
         `
+
+    teamArray.forEach((person) => {
+        let office = person.office ? person.office : ''
+        let school = person.school ? person.school : ''
+        let github = person.github ? person.github : ''
+        html += `
+              <div class="team-member">
+                ${person.name}
+                ${person.role}
+                ${person.id}
+                ${person.email}
+                ${school}
+                ${office}
+                ${github}
+              </div>
+              `
     })
-    html += '</body>'
+
+    html += `
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    </body>
+    </html>
+    `
     
     fs.writeFile("./dist/team.html", html, (err) => {
         console.log('File written!')
