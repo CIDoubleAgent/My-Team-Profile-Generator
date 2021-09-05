@@ -83,18 +83,22 @@ function writeTeamMembersToFile(teamArray) {
         let office = person.office ? person.office : '';
         let github = person.github ? person.github : '';
         let school = person.school ? person.school : '';
-        let roleType = '';
+        let roleName = '';
         let roleIcon = '';
+        let roleInfo = '';
 
         if(person.office) {
-            roleType = 'Office Number: ';
             roleIcon = '<i class="fas fa-mug-hot"></i>'
+            roleName = 'Office Number: ';
+            roleInfo = person.office;
         } else if(person.github) {
-            roleType = 'GitHub: ';
             roleIcon = '<i class="fas fa-glasses"></i>';
+            roleName = 'GitHub: ';
+            roleInfo = '<a href= "https://github.com/' + person.github + '">' + person.github + '</a>';
         } else if(person.school) {
-            roleType = 'School: ';
             roleIcon = '<i class="fas fa-user-graduate"></i>';
+            roleName = 'School: ';
+            roleInfo = person.school;
         }
 
         html += `
@@ -103,8 +107,8 @@ function writeTeamMembersToFile(teamArray) {
                 <h3 class= "ps-3 pt-2 pb-3 mb-0 bg-primary text-white">${roleIcon} ${person.role}</h3>
                 <ul class="list-group px-3 py-5">
                     <li class="list-group-item">ID: ${person.id}</li>
-                    <li class="list-group-item">Email: ${person.email}</li>
-                    <li class="list-group-item">${roleType}${office}${github}${school}</li>
+                    <li class="list-group-item">Email: <a href= "mailto:${person.email}">${person.email}</a></li>
+                    <li class="list-group-item">${roleName}${roleInfo}</li>
                 </ul>
             </div>`
     })
