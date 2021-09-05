@@ -62,8 +62,8 @@ function writeTeamMembersToFile(teamArray) {
             
         <link
         rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
         crossorigin="anonymous"/>
 
         <title>My Team</title>
@@ -84,19 +84,23 @@ function writeTeamMembersToFile(teamArray) {
         let github = person.github ? person.github : '';
         let school = person.school ? person.school : '';
         let roleType = '';
+        let roleIcon = '';
 
         if(person.office) {
             roleType = 'Office Number: ';
+            roleIcon = '<i class="fas fa-mug-hot"></i>'
         } else if(person.github) {
             roleType = 'GitHub: ';
+            roleIcon = '<i class="fas fa-glasses"></i>';
         } else if(person.school) {
             roleType = 'School: ';
+            roleIcon = '<i class="fas fa-user-graduate"></i>';
         }
 
         html += `
             <div class= "card m-3 bg-light shadow-lg" style= "width: 18rem;">
                 <h2 class= "ps-3 pt-2 mb-0 bg-primary text-white">${person.name}</h2>
-                <h3 class= "ps-3 pt-2 pb-3 mb-0 bg-primary text-white">${person.role}</h3>
+                <h3 class= "ps-3 pt-2 pb-3 mb-0 bg-primary text-white">${roleIcon} ${person.role}</h3>
                 <ul class="list-group px-3 py-5">
                     <li class="list-group-item">ID: ${person.id}</li>
                     <li class="list-group-item">Email: ${person.email}</li>
