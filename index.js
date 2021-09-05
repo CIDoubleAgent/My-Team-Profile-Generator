@@ -69,6 +69,8 @@ function writeTeamMembersToFile(teamArray) {
         <title>My Team</title>
     </head>
 
+    <style>A {text-decoration: none;}</style>
+
     <body>
         <header class= "w-100 py-5 mb-5 bg-danger text-white text-center">
             <h1>My Team</h1>
@@ -80,9 +82,7 @@ function writeTeamMembersToFile(teamArray) {
             `
 
     teamArray.forEach((person) => {
-        let office = person.office ? person.office : '';
-        let github = person.github ? person.github : '';
-        let school = person.school ? person.school : '';
+
         let roleName = '';
         let roleIcon = '';
         let roleInfo = '';
