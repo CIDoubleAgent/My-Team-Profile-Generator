@@ -36,7 +36,6 @@ function handleEmployeePrompts(promptData) {
     if (add_member === 'Yes') {
         executePrompts(prompts.employeePrompts, handleEmployeePrompts)
     } else {
-        // TODO create index file
         writeTeamMembersToFile(teamProfileArray)
     }
 }
@@ -128,6 +127,6 @@ function writeTeamMembersToFile(teamArray) {
 `
     
     fs.writeFile("./dist/team.html", html, (err) => {
-        console.log('File written!');
+        console.log('Your team profile is in the "dist" folder!');
     })
 }
