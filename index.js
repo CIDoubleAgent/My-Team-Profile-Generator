@@ -62,8 +62,8 @@ function writeTeamMembersToFile(teamArray) {
             
         <link
         rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+        href="https://use.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
         crossorigin="anonymous"/>
 
         <title>My Team</title>
@@ -80,17 +80,27 @@ function writeTeamMembersToFile(teamArray) {
             `
 
     teamArray.forEach((person) => {
-        let office = person.office ? person.office : ''
-        let school = person.school ? person.school : ''
-        let github = person.github ? person.github : ''
+        let office = person.office ? person.office : '';
+        let github = person.github ? person.github : '';
+        let school = person.school ? person.school : '';
+        let roleType = '';
+
+        if(person.office) {
+            roleType = 'Office Number: ';
+        } else if(person.github) {
+            roleType = 'GitHub: ';
+        } else if(person.school) {
+            roleType = 'School: ';
+        }
+
         html += `
             <div class= "card m-3 bg-light shadow-lg" style= "width: 18rem;">
-                <h2 class= "ps-3 pt-2 mb-0 bg-primary text-white">Name</h2>
-                <h3 class= "ps-3 pt-2 pb-3 mb-0 bg-primary text-white">Role</h3>
+                <h2 class= "ps-3 pt-2 mb-0 bg-primary text-white">${person.name}</h2>
+                <h3 class= "ps-3 pt-2 pb-3 mb-0 bg-primary text-white">${person.role}</h3>
                 <ul class="list-group px-3 py-5">
                     <li class="list-group-item">ID: ${person.id}</li>
                     <li class="list-group-item">Email: ${person.email}</li>
-                    <li class="list-group-item">EmlGitSch: ${office}${github}${school}</li>
+                    <li class="list-group-item">${roleType}${office}${github}${school}</li>
                 </ul>
             </div>`
     })
@@ -110,6 +120,6 @@ function writeTeamMembersToFile(teamArray) {
 `
     
     fs.writeFile("./dist/team.html", html, (err) => {
-        console.log('File written!')
+        console.log('File written!');
     })
 }
