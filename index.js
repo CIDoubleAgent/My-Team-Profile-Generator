@@ -31,7 +31,7 @@ function handleManagerPrompts(promptData) {
 }
 
 function handleEmployeePrompts(promptData) {
-    const { name, id, email, role, add_member, github, school } = promptData; 
+    const { name, id, email, add_member, github, school } = promptData; 
     const engineer = new Engineer(name, id, email, github);
     const intern = new Intern(name, id, email, school);
 
