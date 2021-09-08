@@ -3,6 +3,8 @@ const inquirer = require('inquirer');
 const Manager = require("./lib/Manager");
 const Employee = require("./lib/Employee");
 const prompts = require('./lib/Prompts');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 let teamProfileArray = [];
 
 function executePrompts(prompts, callback) {
@@ -30,9 +32,14 @@ function handleManagerPrompts(promptData) {
 
 function handleEmployeePrompts(promptData) {
     const { name, id, email, role, add_member, github, school } = promptData; 
-    const employee = new Employee(name, id, email, role, github, school)
+    const engineer = new Engineer(name, id, email, github);
+    const intern = new Intern(name, id, email, school);
 
-    teamProfileArray.push(employee.getData());
+    if (promptData.github) {
+        teamProfileArray.push(engineer.getData())
+    } else if (promptData.school) {
+        teamProfileArray.push(intern.getData())
+    }
 
     if (add_member === 'Yes') {
         executePrompts(prompts.employeePrompts, handleEmployeePrompts)
