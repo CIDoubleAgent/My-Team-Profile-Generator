@@ -3,12 +3,19 @@
   ## Description
   A command line interface app that generates a team profile with cards for each team member. Cards are generated using collected user input sorted into classes. 
   ## Table of contents
+  * [Links](#Links)
   * [Installation](#installation)
   * [Usage](#usage)
   * [How to Contribute](#how-to-contribute)
   * [Tests](#tests)
   * [Liscense](#liscense)
   * [Questions](#questions)
+  ## Links
+  [GitHub Repository](https://github.com/CIDoubleAgent/My-Team-Profile-Generator)
+
+  [Demo Video](https://youtu.be/xwm5PjS7WEQ)
+
+  [Example Team Profile HTML File](https://github.com/CIDoubleAgent/My-Team-Profile-Generator/blob/main/exampleHTML/exampleTeamProfile.html)
   ## Installation
   Save locally, navigate to rep and enter "node index.js", then answer the prompt questions. After adding the last team member your generated team profile will be in the "dist" folder.
   ## Usage
